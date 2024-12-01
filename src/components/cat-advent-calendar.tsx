@@ -152,31 +152,32 @@ const AdventCalendar = () => {
       <div className="grid grid-cols-4 sm:grid-cols-6 gap-4 relative">
         {positions.map((day, index) => {
           const isAvailable = isWindowAvailable(day);
+          const imageUrl = `https://bluebell-advent-2024.s3.eu-west-2.amazonaws.com/bluebell%20-%20${day}.jpeg`;
+
           return (
             <div 
               key={index}
-              onClick={() => handleWindowClick(day)}
+              onClick={() => !openWindows.has(day) && handleWindowClick(day)}
               className={`
                 relative aspect-square transition-transform duration-300
-                ${isAvailable ? 'cursor-pointer' : 'cursor-not-allowed opacity-70'}
-                ${openWindows.has(day) ? 'rotate-y-180' : isAvailable ? 'hover:scale-105' : ''}
+                ${!openWindows.has(day) && isAvailable ? 'cursor-pointer' : ''}
+                ${openWindows.has(day) ? 'rotate-y-180' : isAvailable ? 'hover:scale-105' : 'cursor-not-allowed opacity-70'}
               `}
             >
               {openWindows.has(day) ? (
                 <div className="w-full h-full bg-white rounded-lg shadow-lg p-2 flex items-center justify-center">
                   <a 
-                    href={`https://bluebell-advent-2024.s3.eu-west-2.amazonaws.com/bluebell%20-%20${day}.jpeg`}
-                    // target="_blank" 
+                    href={imageUrl} 
+                    target="_blank" 
                     rel="noopener noreferrer"
                     className="w-full h-full cursor-pointer hover:opacity-90 transition-opacity"
                   >
-
-                  <img 
-                    src={`https://bluebell-advent-2024.s3.eu-west-2.amazonaws.com/bluebell%20-%20${day}.jpeg`}
-                    alt={`Cat ${day}`}
-                    className="w-full h-full object-cover rounded"
+                    <img 
+                      src={imageUrl}
+                      alt={`Cat ${day}`}
+                      className="w-full h-full object-cover rounded"
                     />
-                    </a>
+                  </a>
                 </div>
               ) : (
                 <div className={`

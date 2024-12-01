@@ -1,9 +1,5 @@
-import AdventCalendar from '@/components/cat-advent-calendar'
+import ClientPage from '@/components/client-page'
 
 export default function Home() {
-  return (
-    <main className="container mx-auto py-8">
-      <AdventCalendar />
-    </main>
-  )
+  return <ClientPage />
 }
