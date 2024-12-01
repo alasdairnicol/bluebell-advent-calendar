@@ -152,7 +152,7 @@ const AdventCalendar = () => {
       <div className="grid grid-cols-4 sm:grid-cols-6 gap-4 relative">
         {positions.map((day, index) => {
           const isAvailable = isWindowAvailable(day);
-          const imageUrl = `https://bluebell-advent-2024.s3.eu-west-2.amazonaws.com/bluebell%20-%20${day}.jpeg`;
+          const imageUrl = `images/days/${day}.jpeg`;
 
           return (
             <div 
