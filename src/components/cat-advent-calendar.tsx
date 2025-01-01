@@ -193,9 +193,12 @@ const AdventCalendar = () => {
       </div>
       
       <p className="text-center mt-4 text-green-700 relative">
-        {currentMonth === 11 ? currentDay === 1
-          ? `Find and open door 1. Come back each day for a new picture of Bluebell!`
-          : `Find and open doors 1-${currentDay}. Come back each day for a new picture of Bluebell!`
+        {currentMonth === 11 ?
+          (currentDay < 24 ?
+            currentDay === 1
+              ? "Find and open door 1. Come back each day for a new picture of Bluebell!"
+              : `Find and open doors 1-${currentDay}. Come back each day for a new picture of Bluebell!`
+            : "All advent calendar doors are now available!")
           : "The advent calendar will be available in December!"}
       </p>
     </Card>
